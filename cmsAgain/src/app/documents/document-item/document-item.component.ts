@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-//import { Document } from './src/app/documents/document.model';
+import { Document } from '../document.model';
 
 @Component({
   selector: 'app-document-item',

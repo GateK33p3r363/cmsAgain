@@ -1,6 +1,6 @@
-//import { Component } from '@angular/core';
-import { Component, Output, EventEmitter } from '@angular/core';
-//import { Contact } from './src/app/contacts/contact.model';
+import { Component, Output, OnInit, EventEmitter } from '@angular/core';
+//import { Contact } from '../contact.model';
+import { ContactService } from '../contact.service';
 
 export interface Contact {
   id: string;
@@ -17,29 +17,21 @@ export interface Contact {
   styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent {
-  //@Output() selectedContactEvent = new EventEmitter<Contact>();
-  contacts: Contact[] = [
-    {
-      id: "1",
-      name: "R. Kent Jackson",
-      email: "jacksonk@byui.edu",
-      phone: "208-496-3771",
-      imageUrl: "../../assets/images/jacksonk.jpg",
-      group: null
-    },
-    {
-      id: "2",
-      name: "Rex Barzee",
-      email: "barzeer@byui.edu",
-      phone: "208-496-3768",
-      imageUrl: "../../assets/images/barzeer.jpg",
-      group: null
-    }
-    
-  ];
+  @Output() selectedContactEvent = new EventEmitter<Contact>();
+  contacts: Contact[] = [];
+  //constrictor(private contactService: ContactService){}
+  
+  ngOnInit() {
+    this.getContacts();
+  }
+
+  getContacts() {
+    //this.contacts = this.contactService.getContacts();
+  }
 
   onSelected(contact: Contact) {
     //this.selectedContactEvent.emit(contact);
+    //this.contactSevice.contactSelectedEven.emit(contact);
   }
 
   createNewContact() {
